@@ -16,10 +16,12 @@ const App = () => {
   //   React.createElement(Pet, { name: "Doink", animal: "Dog", breed: "Mixed" })
   // );
   return(
-    <div>
-       <h1 id="something-important" >Adobt me!</h1>
-       <SearchParams />
-    </div>
+    <React.StrictMode>
+      <div>
+        <h1 id="something-important" >Adobt me!</h1>
+        <SearchParams />
+      </div>
+    </React.StrictMode>
   )
 };
 render(React.createElement(App), document.getElementById("root"));
