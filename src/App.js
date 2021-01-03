@@ -1,7 +1,8 @@
 import React from 'react'
 import {render} from 'react-dom'
 import SearchParams from './SearchParams'
-
+import {BrowserRouter as  Router,Link,Route } from 'react-router-dom';
+import Detail from './Detail';
 const App = () => {
   //   return React.createElement(
   //   "div",
@@ -17,10 +18,18 @@ const App = () => {
   // );
   return(
     <React.StrictMode>
-      <div>
-        <h1 id="something-important" >Adobt me!</h1>
-        <SearchParams />
-      </div>
+      <Router>
+        <div>
+          <header>
+            <Link to="/" >Adobt me!</Link>
+          </header>
+          
+              <React.Fragment>
+                <Route  exact path="/" component={SearchParams} />
+                <Route  exact path="/details/:id" component={Detail} />
+              </React.Fragment>
+        </div>
+        </Router>
     </React.StrictMode>
   )
 };
