@@ -1,9 +1,11 @@
-import React from 'react'
+import React,{useState} from 'react'
 import {render} from 'react-dom'
 import SearchParams from './SearchParams'
 import {BrowserRouter as  Router,Link,Route } from 'react-router-dom';
-import Detail from './Detail';
+import Details from './Details';
+import themeContex from './Contex'
 const App = () => {
+  const theme = useState('lightcoral')
   //   return React.createElement(
   //   "div",
   //   {},
@@ -17,20 +19,22 @@ const App = () => {
   //   React.createElement(Pet, { name: "Doink", animal: "Dog", breed: "Mixed" })
   // );
   return(
-    <React.StrictMode>
-      <Router>
-        <div>
-          <header>
-            <Link to="/" >Adobt me!</Link>
-          </header>
-          
-              <React.Fragment>
-                <Route  exact path="/" component={SearchParams} />
-                <Route  exact path="/details/:id" component={Detail} />
-              </React.Fragment>
-        </div>
-        </Router>
-    </React.StrictMode>
+    <themeContex.Provider value={theme}>
+      <React.StrictMode>
+        <Router>
+          <div>
+            <header>
+              <Link to="/" >Adobt me!</Link>
+            </header>
+            
+                <React.Fragment>
+                  <Route  exact path="/" component={SearchParams} />
+                  <Route  exact path="/details/:id" component={Details} />
+                </React.Fragment>
+          </div>
+          </Router>
+      </React.StrictMode>
+    </themeContex.Provider>
   )
 };
 render(React.createElement(App), document.getElementById("root"));
