@@ -4,7 +4,6 @@ import Carousel from './Carousel'
 import ErrorBoundary from './ErrorBoundary'
 import Modal from './Modal';
 import themeContex from './Contex'
-import { history } from 'react-router-dom';
 
 class Details extends React.Component{
         state = {
@@ -33,14 +32,15 @@ class Details extends React.Component{
             model:!this.state.model
         })
     }
+    adoptMe = () => {
+        window.location.href = this.state.url;
+    }
     
     render() {
         if(this.state.loading){
             return <h1>Loading...</h1>
         }
         const {name,animal,breed,location,description,media,model,url} = this.state
-        console.log("model",model);
-        console.log("url",url);
         return(
             <div className="details">
                 <Carousel media={media} />
@@ -61,9 +61,9 @@ class Details extends React.Component{
                                     <h1>Would you like to adopt {name}</h1>
                                     <div className="buttons">
                                         <a href={url} target="_blank" >
-                                            <button onClick={this.adopt} >Yes</button>
+                                            <button>Yes</button>
                                         </a>
-                                        <button onClick={this.toggle} >No i am a monster</button>
+                                        <button onClick={this.toggle} >Close</button>
                                     </div>
                                 </div>
                             </Modal>

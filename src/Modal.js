@@ -10,7 +10,6 @@ const Modal = ({children}) => {
     
     useEffect(()=>{
         const modalRoot = document.getElementById('modal');
-        console.log("modalRoot",modalRoot);
         modalRoot.appendChild(elRef.current)
         return () =>  modalRoot.removeChild(elRef.current)
     },[])
