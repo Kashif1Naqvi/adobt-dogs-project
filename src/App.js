@@ -1,9 +1,10 @@
-import React,{useState} from 'react'
+import React,{useState,lazy,Suspense} from 'react'
 import {render} from 'react-dom'
-import SearchParams from './SearchParams'
 import {BrowserRouter as  Router,Link,Route } from 'react-router-dom';
-import Details from './Details';
+// import Details from './Details';
 import themeContex from './Contex'
+const Details = lazy(()=> import('./Details'));
+const SearchParams  = lazy(()=> import('./SearchParams'))
 const App = () => {
   const theme = useState('lightcoral')
   //   return React.createElement(
@@ -26,11 +27,12 @@ const App = () => {
             <header>
               <Link to="/" >Adobt me!</Link>
             </header>
-            
+            <Suspense fallback={<h1>loading route...</h1>} >
                 <React.Fragment>
                   <Route  exact path="/" component={SearchParams} />
                   <Route  exact path="/details/:id" component={Details} />
                 </React.Fragment>
+            </Suspense>
           </div>
           </Router>
       </React.StrictMode>

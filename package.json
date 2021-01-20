@@ -4,6 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "cleaer-build-cache": "rm -rf .cache/ dist/",
     "dev": "parcel src/index.html",
     "dev:mock": "cross-env PET_MOCK=mock parcel src/index.html",
     "format": "prettier \"src/**/*.{js,html}\" --write",
@@ -14,6 +15,8 @@
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "@babel/core": "^7.12.10",
+    "@babel/preset-react": "^7.12.10",
     "babel-eslint": "^10.1.0",
     "cross-env": "^7.0.3",
     "eslint": "^7.16.0",
@@ -25,7 +28,11 @@
     "prettier": "^2.2.1"
   },
   "dependencies": {
+    "@emotion/babel-preset-css-prop": "^11.0.0",
+    "@emotion/core": "^10.1.1",
+    "@emotion/react": "^11.1.4",
     "@frontendmasters/pet": "^1.0.3",
+    "moment": "^2.29.1",
     "parcel": "^1.12.4",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
